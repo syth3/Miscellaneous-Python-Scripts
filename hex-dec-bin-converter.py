@@ -5,7 +5,6 @@ This script prints a hex, decimal, and binary representation of your input.
 
 
 import sys
-import binascii
 
 
 def hex_converter(input_hex):
