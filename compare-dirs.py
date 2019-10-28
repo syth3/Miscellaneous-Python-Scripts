@@ -6,6 +6,9 @@ from pathlib import Path
 source_dir = ""
 dest_dir = ""
 
+# Add --relative and -r flags to print a relative path
+# Add an option for the relative and absolute paths to be printed to a csv file. Maybe one sheet for each secton printed?
+
 if len(sys.argv) == 1:
     source_dir = input("Input source dir: ")
     dest_dir = input("Input dest dir: ")
@@ -36,9 +39,9 @@ diff = dest_dir_files - source_dir_files
 num_dashes = 30
 print("="*num_dashes + str(len(diff)) + " File(s) in dest_dir that are not in source_dir" + "="*num_dashes)
 for file in diff:
-    print(file)
+    print(dest_dir / file)
 
 diff = source_dir_files - dest_dir_files
 print("="*num_dashes + str(len(diff)) + " File(s) in source_dir that are not in dest_dir" + "="*num_dashes)
 for file in diff:
-    print(file)
+    print(source_dir / file)
