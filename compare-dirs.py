@@ -36,12 +36,19 @@ for curr_dir, dirs, files in os.walk(dest_dir):
         dest_dir_files.add(full_path.relative_to(dest_dir))
 
 diff = dest_dir_files - source_dir_files
-num_dashes = 30
-print("="*num_dashes + str(len(diff)) + " File(s) in dest_dir that are not in source_dir" + "="*num_dashes)
+num_dashes = 20
+#print("="*num_dashes + str(len(diff)) + " File(s) in \"" + dest_dir.name + "\" that are not in \"" + source_dir.name + "\"" + "="*num_dashes)
+print("File Name (" + str(len(diff)) + " total)" + "\t" + "Full Path")
 for file in diff:
-    print(dest_dir / file)
+    full_dir = dest_dir / file
+    if not full_dir.parts[2] == "Virtual Machines" and file.name[0] != '~' and file.name[0] != '.' and file.name != "desktop.ini":
+        print(file.name + "\t", end="")
+        #print(file)
+        print(dest_dir / file)
 
 diff = source_dir_files - dest_dir_files
-print("="*num_dashes + str(len(diff)) + " File(s) in source_dir that are not in dest_dir" + "="*num_dashes)
+#print("="*num_dashes + str(len(diff)) + " File(s) in \"" + source_dir.name + "\" that are not in \"" + dest_dir.name + "\"" + "="*num_dashes)
 for file in diff:
+    print(file.name + "\t", end="")
+    #print(file)
     print(source_dir / file)
