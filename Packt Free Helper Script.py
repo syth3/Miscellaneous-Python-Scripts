@@ -27,10 +27,9 @@ def main ():
     # Rename Files
     for curr_dir, dirs, files in os.walk(new_book_path):
         for file in files:
-            file_name_extension = file.split(".")[1]
+            file_name_extension = os.path.splitext(file)[1]
             if file_name_extension == "zip":
-                os.rename(new_book_path / file, str(new_book_path / book_name) + " Code Files" + "." + file_name_extension)
+                os.rename(new_book_path / file, str(new_book_path / book_name) + " Code Files" + file_name_extension)
             else:
-                os.rename(new_book_path / file, str(new_book_path / book_name) + "." + file_name_extension)
-            print(new_book_path / file)
+                os.rename(new_book_path / file, str(new_book_path / book_name) + file_name_extension)
 main()
